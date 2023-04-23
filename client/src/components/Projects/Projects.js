@@ -28,7 +28,7 @@ const Projects = () => {
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/projects", {
+        const res = await axios.get(process.env.REACT_APP_SERVER_BASE_URL+"/projects", {
           withCredentials: true,
         });
         if (res.data.noToken || res.data.tokenInvalid) {

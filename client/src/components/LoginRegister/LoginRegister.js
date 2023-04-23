@@ -14,9 +14,12 @@ const LoginRegister = () => {
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/login", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          process.env.REACT_APP_SERVER_BASE_URL+"/login",
+          {
+            withCredentials: true,
+          }
+        );
         if (res.data.noToken || res.data.tokenInvalid) {
           console.log(res.data.message);
         } else {
@@ -57,7 +60,7 @@ const LoginRegister = () => {
     });
     try {
       const res = await axios.post(
-        "http://localhost:3001/register",
+        process.env.REACT_APP_SERVER_BASE_URL + "/register",
         {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -85,7 +88,7 @@ const LoginRegister = () => {
     setCredentials({ ...credentials, password: "" });
     try {
       const res = await axios.post(
-        "http://localhost:3001/login",
+        process.env.REACT_APP_SERVER_BASE_URL + "/login",
         {
           email: credentials.email,
           password: credentials.password,
