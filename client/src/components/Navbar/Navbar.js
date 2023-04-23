@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import ListSharpIcon from "@mui/icons-material/ListSharp";
 
@@ -22,14 +22,16 @@ const Navbar = (props) => {
             <ListSharpIcon
               sx={{
                 width: "35px",
-                height: "35px"
+                height: "35px",
               }}
             />
           </button>
           <div>ICON</div>
         </div>
         <div className={mobileView ? "mobile-links" : "links"}>
-          <Link to="/projects" state={{userId: props.userId}}>Projects</Link>
+          <Link to="/projects" state={{ userId: props.userId }}>
+            Projects
+          </Link>
           <Link to="/tasks">Tasks</Link>
         </div>
       </div>

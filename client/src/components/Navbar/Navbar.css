@@ -1,138 +1,137 @@
 .navbar {
-    display: flex;
-    background-color: orange;
-    align-items: center;
-    height: 80px;
-    height: auto;
-    min-width: 200px;
-  }
-  
+  display: flex;
+  background-color: orange;
+  align-items: center;
+  height: 80px;
+  height: auto;
+  min-width: 200px;
+}
+
+.icon {
+  display: flex;
+  flex: 50%;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100px;
+  height: auto;
+}
+
+.icon > div {
+  color: white;
+  width: 100px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  border-radius: 3px;
+  border-style: none;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.icon > div:hover {
+  text-shadow: 10px 0 10px white, -10px 0 10px white, 0 10px 10px white,
+    0 -10px 10px white;
+}
+
+.links {
+  display: flex;
+  flex: 50%;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
+}
+
+.links > * {
+  color: white;
+  width: 100px;
+  margin: 0 0 0 5px;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.links > *:hover {
+  text-shadow: 10px 0 10px white, -10px 0 10px white, 0 10px 10px white,
+    0 -10px 10px white;
+}
+
+.navbar-toggle-button {
+  display: none;
+}
+
+.mobile-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.mobile-links > * {
+  display: flex;
+  align-items: center;
+  height: 10px;
+  width: 50%;
+  border-width: 1px;
+  border-top: 0px;
+  background-color: orange;
+  color: white;
+  margin: 20px 0px 0px 0px;
+  padding: 10px;
+  border-style: solid;
+  border-color: white orange;
+}
+
+.mobile-links > *:hover {
+  box-shadow: 0 0 20px white;
+  text-shadow: 10px 0 10px white, -10px 0 10px white, 0 10px 10px white,
+    0 -10px 10px white;
+  border-style: none;
+  border-radius: 0 50px 50px 0px;
+}
+
+@media only screen and (max-width: 750px) {
   .icon {
+    width: 90%;
     display: flex;
-    flex: 50%;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100px;
-    height: auto;
+    justify-content: space-between;
   }
-  
-  .icon > div {
-    color: white;
-    width: 100px;
-    height: 64px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
-    border-radius: 3px;
-    border-style: none;
-    cursor: pointer;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-  }
-  
-  .icon > div:hover {
-    text-shadow: 10px 0 10px white, -10px 0 10px white, 0 10px 10px white,
-      0 -10px 10px white;
-  }
-  
+
   .links {
-    display: flex;
-    flex: 50%;
-    justify-content: flex-start;
-    align-items: center;
-    height: 80px;
-  }
-  
-  .links > * {
-    color: white;
-    width: 100px;
-    margin: 0 0 0 5px;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .links > *:hover {
-    text-shadow: 10px 0 10px white, -10px 0 10px white, 0 10px 10px white,
-      0 -10px 10px white;
-  }
-  
-  .navbar-toggle-button {
     display: none;
   }
-  
-  .mobile-links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  
-  .mobile-links > * {
-    display: flex;
-    align-items: center;
-    height: 10px;
-    width: 50%;
-    border-width: 1px;
-    border-top: 0px;
+
+  .navbar-toggle-button {
+    display: block;
+    margin-right: 5px;
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    cursor: pointer;
     background-color: orange;
     color: white;
-    margin: 20px 0px 0px 0px;
-    padding: 10px;
-    border-style: solid;
-    border-color: white orange;
+    border: none;
+    border-radius: 3px;
   }
-  
-  .mobile-links > *:hover {
+
+  .navbar-toggle-button:hover {
     box-shadow: 0 0 20px white;
-    text-shadow: 10px 0 10px white, -10px 0 10px white, 0 10px 10px white,
-      0 -10px 10px white;
-    border-style: none;
-    border-radius: 0 50px 50px 0px;
   }
-  
-  @media only screen and (max-width: 750px) {
-    .icon {
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
-    }
-  
-    .links {
-      display: none;
-    }
-  
-    .navbar-toggle-button {
-      display: block;
-      margin-right: 5px;
-      width: 45px;
-      height: 45px;
-      align-self: center;
-      cursor: pointer;
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 3px;
-    }
-  
-    .navbar-toggle-button:hover {
-      box-shadow: 0 0 20px white;
-    }
-  
-    .navbar {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 5px 0 5px 0;
-      width: 100%;
-    }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0 5px 0;
+    width: 100%;
   }
-  
+}

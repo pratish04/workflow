@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import schema from "./Schema";
@@ -9,27 +9,25 @@ import "./LoginRegister.css";
 import "../../components/GlobalCss.css";
 
 const LoginRegister = () => {
-
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-        const isAuthenticated=async () => {
-            try{
-                const res=await axios.get("http://localhost:3001/login", {
-                    withCredentials: true,
-                });
-                if(res.data.noToken || res.data.tokenInvalid){
-                    console.log(res.data.message);
-                }
-                else{
-                    navigate("/projects");
-                }
-            }catch{
-                console.log("Some error occurred!");
-            }
-        };
-        isAuthenticated();
-    }, [navigate]);
+    const isAuthenticated = async () => {
+      try {
+        const res = await axios.get("http://localhost:3001/login", {
+          withCredentials: true,
+        });
+        if (res.data.noToken || res.data.tokenInvalid) {
+          console.log(res.data.message);
+        } else {
+          navigate("/projects");
+        }
+      } catch {
+        console.log("Some error occurred!");
+      }
+    };
+    isAuthenticated();
+  }, [navigate]);
 
   const [displaySignUpForm, setDisplaySignUpForm] = useState(false);
   const [error, setError] = useState({
@@ -40,43 +38,45 @@ const LoginRegister = () => {
 
   const [credentials, setCredentials] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   const onSignUp = async (data) => {
     reset({
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     });
-    try{
-        const res=await axios.post("http://localhost:3001/register", {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        password: data.password,
-      }, {
-        withCredentials: true,
-      });
-      if(res.data.emailAlreadyInUse){
-        setError({...error, emailAlreadyInUse: true});
-      }
-      else if(res.data.registrationSuccessful){
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/register",
+        {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          password: data.password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      if (res.data.emailAlreadyInUse) {
+        setError({ ...error, emailAlreadyInUse: true });
+      } else if (res.data.registrationSuccessful) {
         console.log(res.data.message);
         navigate("/projects");
-      }
-      else{
+      } else {
         console.log(res.data.message);
       }
-    }catch{
+    } catch {
       console.log("Caught at register!");
     }
   };
@@ -84,21 +84,23 @@ const LoginRegister = () => {
   const onSignIn = async () => {
     setCredentials({ ...credentials, password: "" });
     try {
-      const res = await axios.post("http://localhost:3001/login", {
-        email: credentials.email,
-        password: credentials.password
-      }, {
-        withCredentials: true,
-      });
-      if(res.data.accountDoesNotExist){
-        setError({...error, accountDoesNotExist: true});
+      const res = await axios.post(
+        "http://localhost:3001/login",
+        {
+          email: credentials.email,
+          password: credentials.password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      if (res.data.accountDoesNotExist) {
+        setError({ ...error, accountDoesNotExist: true });
         console.log(res.data.message);
-      }
-      else if(res.data.wrongCombination){
-        setError({...error, wrongCombination: true});
+      } else if (res.data.wrongCombination) {
+        setError({ ...error, wrongCombination: true });
         console.log(res.data.message);
-      }
-      else{
+      } else {
         console.log(res.data.message);
         navigate("/projects");
       }
@@ -119,7 +121,11 @@ const LoginRegister = () => {
                 type="email"
                 value={credentials.email}
                 onChange={(e) => {
-                  setError({ ...error, wrongCombination: false, accountDoesNotExist: false});
+                  setError({
+                    ...error,
+                    wrongCombination: false,
+                    accountDoesNotExist: false,
+                  });
                   setCredentials({ ...credentials, email: e.target.value });
                 }}
               ></input>
@@ -175,8 +181,8 @@ const LoginRegister = () => {
                 placeholder="email"
                 type="email"
                 {...register("email")}
-                onChange={(e)=>{
-                  setError({...error, emailAlreadyInUse: false});
+                onChange={(e) => {
+                  setError({ ...error, emailAlreadyInUse: false });
                 }}
               ></input>
               <span className="error">{errors.email?.message}</span>
