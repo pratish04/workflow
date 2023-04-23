@@ -1,26 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import LoginRegister from "./components/LoginRegister/LoginRegister";
+import Projects from "./components/Projects/Projects";
+import ProjectView from "./components/ProjectView/ProjectView";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.<br/>
-          second deployment
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<LoginRegister />} />
+        <Route exact path="/projects" element={<Projects />} />
+        <Route exact path="/project-view" element={<ProjectView />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
