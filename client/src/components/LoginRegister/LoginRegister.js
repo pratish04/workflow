@@ -15,7 +15,7 @@ const LoginRegister = () => {
     const isAuthenticated = async () => {
       try {
         const res = await axios.get(
-          process.env.REACT_APP_BASE_URL+"/login",
+          process.env.REACT_APP_SERVER_URL+"/login",
           {
             withCredentials: true,
           }
@@ -60,7 +60,7 @@ const LoginRegister = () => {
     });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_BASE_URL + "/register",
+        process.env.REACT_APP_SERVER_URL + "/register",
         {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -88,7 +88,7 @@ const LoginRegister = () => {
     setCredentials({ ...credentials, password: "" });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_BASE_URL + "/login",
+        process.env.REACT_APP_SERVER_URL + "/login",
         {
           email: credentials.email,
           password: credentials.password,

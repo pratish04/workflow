@@ -19,7 +19,7 @@ const ProjectView = () => {
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
-        const res = await axios.get(process.env.REACT_APP_BASE_URL+"/projects", {
+        const res = await axios.get(process.env.REACT_APP_SERVER_URL+"/projects", {
           withCredentials: true,
         });
         if (res.data.noToken || res.data.tokenInvalid) {
