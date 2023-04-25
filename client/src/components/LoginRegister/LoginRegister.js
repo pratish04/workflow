@@ -15,7 +15,7 @@ const LoginRegister = () => {
     const isAuthenticated = async () => {
       try {
         const res = await axios.get(
-          process.env.REACT_APP_SERVER_URL+"/login",
+          "https://workflow-server.onrender.com/login",
           {
             withCredentials: true,
           }
@@ -88,7 +88,7 @@ const LoginRegister = () => {
     setCredentials({ ...credentials, password: "" });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_SERVER_URL + "/login",
+        "https://workflow-server.onrender.com/login",
         {
           email: credentials.email,
           password: credentials.password,
