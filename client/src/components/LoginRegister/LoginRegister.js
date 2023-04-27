@@ -10,14 +10,12 @@ import "../../components/GlobalCss.css";
 
 const LoginRegister = () => {
   const navigate = useNavigate();
-
-  const SERVER_URL=process.env.REACT_APP_SERVER_URL;
   
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
         const res = await axios.get(
-          SERVER_URL+"login",
+          "https://workflow-server.onrender.com/login",
           {
             withCredentials: true,
           }
@@ -62,7 +60,7 @@ const LoginRegister = () => {
     });
     try {
       const res = await axios.post(
-        SERVER_URL + "register",
+        "https://workflow-server.onrender.com/register",
         {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -90,7 +88,7 @@ const LoginRegister = () => {
     setCredentials({ ...credentials, password: "" });
     try {
       const res = await axios.post(
-        SERVER_URL + "login",
+        "https://workflow-server.onrender.com/login",
         {
           email: credentials.email,
           password: credentials.password,
