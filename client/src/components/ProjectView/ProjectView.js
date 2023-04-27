@@ -15,11 +15,13 @@ const ProjectView = () => {
   const [displayCreateWindow, setDisplayCreateWindow] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [users, setUsers] = useState([]);
+  
+  const SERVER_URL=process.env.REACT_APP_SERVER_URL;
 
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
-        const res = await axios.get(process.env.REACT_APP_SERVER_URL+"projects", {
+        const res = await axios.get(SERVER_URL+"projects", {
           withCredentials: true,
         });
         if (res.data.noToken || res.data.tokenInvalid) {

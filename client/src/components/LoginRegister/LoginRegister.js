@@ -11,11 +11,13 @@ import "../../components/GlobalCss.css";
 const LoginRegister = () => {
   const navigate = useNavigate();
 
+  const SERVER_URL=process.env.REACT_APP_SERVER_URL;
+  
   useEffect(() => {
     const isAuthenticated = async () => {
       try {
         const res = await axios.get(
-          process.env.REACT_APP_SERVER_URL+"login",
+          SERVER_URL+"login",
           {
             withCredentials: true,
           }
@@ -60,7 +62,7 @@ const LoginRegister = () => {
     });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_SERVER_URL + "register",
+        SERVER_URL + "register",
         {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -88,7 +90,7 @@ const LoginRegister = () => {
     setCredentials({ ...credentials, password: "" });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_SERVER_URL + "login",
+        SERVER_URL + "login",
         {
           email: credentials.email,
           password: credentials.password,
