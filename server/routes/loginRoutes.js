@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
                   },
                   process.env.ACCESS_TOKEN_SECRET,
                   {
-                    expiresIn: 30,
+                    expiresIn: '1m',
                   }
                 );
                 res
@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
                     httpOnly: true,
                     secure: true,
                     sameSite: false,
-                    expires: new Date(Date.now() + 30),
+                    expires: new Date(Date.now() + 1000000),
                   })
                   .send({ message: "USER LOGGED IN!" });
                 console.log(token);
