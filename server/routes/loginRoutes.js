@@ -46,8 +46,9 @@ router.post("/", (req, res) => {
                 res
                   .cookie("accessToken", token, {
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === "production",
+                    secure: true,
                     sameSite: false,
+                    expires: new Date(Date.now() + 30),
                   })
                   .send({ message: "USER LOGGED IN!" });
                 console.log(token);
