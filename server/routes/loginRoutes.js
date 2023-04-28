@@ -35,8 +35,13 @@ router.post("/", (req, res) => {
                 console.log(err2);
               } else if (result2) {
                 const token = jwt.sign(
-                  { userId: result1[0].userId },
-                  process.env.ACCESS_TOKEN_SECRET
+                  {
+                    userId: result1[0].userId,
+                  },
+                  process.env.ACCESS_TOKEN_SECRET,
+                  {
+                    expiresIn: 30,
+                  }
                 );
                 res
                   .cookie("accessToken", token, {
