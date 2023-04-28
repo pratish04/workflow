@@ -40,14 +40,14 @@ router.post("/", (req, res) => {
                   },
                   process.env.ACCESS_TOKEN_SECRET,
                   {
-                    expiresIn: '1m',
+                    expiresIn: '10m',
                   }
                 );
                 res
                   .cookie("accessToken", token, {
                     httpOnly: true,
+                    sameSite: 'none',
                     secure: true,
-                    sameSite: false,
                     expires: new Date(Date.now() + 1000000),
                   })
                   .send({ message: "USER LOGGED IN!" });

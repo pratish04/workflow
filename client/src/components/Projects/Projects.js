@@ -29,7 +29,7 @@ const Projects = () => {
     const isAuthenticated = async () => {
       try {
         const res = await axios.get(
-          "https://workflow-server.onrender.com/projects",
+          "http://localhost:3001/projects",
           {
             withCredentials: true,
           }
