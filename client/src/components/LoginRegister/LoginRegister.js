@@ -15,7 +15,7 @@ const LoginRegister = () => {
     const isAuthenticated = async () => {
       try {
         const res = await axios.get(
-          "https://workflow-server.onrender.com/login",
+          "http://localhost:3001/login",
           {
             withCredentials: true,
           }
@@ -60,7 +60,7 @@ const LoginRegister = () => {
     });
     try {
       const res = await axios.post(
-        "https://workflow-server.onrender.com/register",
+        "https://localhost:3001/register",
         {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -88,7 +88,7 @@ const LoginRegister = () => {
     setCredentials({ ...credentials, password: "" });
     try {
       const res = await axios.post(
-        "https://workflow-server.onrender.com/login",
+        "http://localhost:3001/login",
         {
           email: credentials.email,
           password: credentials.password,
