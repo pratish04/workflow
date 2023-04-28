@@ -47,6 +47,7 @@ router.post("/", (req, res) => {
                   .cookie("accessToken", token, {
                     httpOnly: true,
                     secure: process.env.NODE_ENV === "production",
+                    sameSite: false,
                   })
                   .send({ message: "USER LOGGED IN!" });
                 console.log(token);
